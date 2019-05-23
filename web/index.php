@@ -26,7 +26,7 @@ $app->get('/cowsay', function() use($app) {
 	$app['monolog']->addDebug('cowsay');
 	return "<pre>".\Cowsayphp\Cow::say("Moo I am a cow!")."</pre>";
 });
-
+/*
 $dbopts = parse_url(getenv('DATABASE_URL')); 
 $app->regiser(new Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider('pdo'),
 	array(
@@ -54,4 +54,5 @@ return $app['twig']->render('database.twig', array(
 	'names' => $names
 ));
 });
+*/
 $app->run();
