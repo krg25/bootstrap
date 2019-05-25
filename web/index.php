@@ -27,8 +27,8 @@ $app->get('/cowsay', function() use($app) {
 	return "<pre>".\Cowsayphp\Cow::say("Moo I am a cow!")."</pre>";
 });
 
-$dbopts = parse_url(getenv('DATABASE_URL')); 
-$app->regiser(new Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider('pdo'),
+$dbopts = parse_url(getenv('DATABASE_URL'));
+$app->register(new Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider('pdo'),
 	array(
 	'pdo.server' => array(
 	'driver' => 'pgsql',
@@ -40,7 +40,7 @@ $app->regiser(new Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider(
 )
 )
 );
-/*
+
 $app->get('/db/', function() use($app) {
 	$st = $app['pdo']->prepare('SELECT name FROM test_table');
 	$st->execute();
@@ -55,5 +55,5 @@ return $app['twig']->render('database.twig', array(
 	'names' => $names
 ));
 });
-*/
+
 $app->run();
