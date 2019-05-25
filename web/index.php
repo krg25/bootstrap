@@ -17,12 +17,16 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 
 // Our web handlers
 
+$app->get('/rep', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return str_repeat('Hello', getenv('TIMES'));
+});
+
 $app->get('/', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  //return str_repeat('Hello', getenv('TIMES'));
-  return $app['twig']->render('index.twig');
-
+   return $app['twig']->render('ken.twig');
 });
+
 
 $app->get('/cowsay', function() use($app) {
 	$app['monolog']->addDebug('cowsay');
